@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/hit-brick.ogg-699404071ed831a893a9c53974ca81a7.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/hit-brick.ogg"
+dest_files=[ "res://.import/hit-brick.ogg-699404071ed831a893a9c53974ca81a7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

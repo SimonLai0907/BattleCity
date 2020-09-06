@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/high-score.ogg-941fb75e8e7a2cfd854bc135e8048b68.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/high-score.ogg"
+dest_files=[ "res://.import/high-score.ogg-941fb75e8e7a2cfd854bc135e8048b68.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

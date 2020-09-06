@@ -1,0 +1,91 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://assets/sprite/tank_y0/5.png" type="Texture" id=1]
+[ext_resource path="res://assets/sprite/tank_y0/1.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprite/tank_y0/4.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprite/tank_y0/6.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprite/tank_y0/0.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprite/tank_y0/2.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprite/tank_y0/3.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprite/tank_y0/7.png" type="Texture" id=8]
+[ext_resource path="res://src/Player.gd" type="Script" id=9]
+[ext_resource path="res://assets/sprite/PlayerFX2.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprite/PlayerFX1.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprite/tank_y2/0.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprite/tank_y3/0.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprite/tank_y2/1.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprite/tank_y1/0.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprite/tank_y1/1.png" type="Texture" id=16]
+[ext_resource path="res://assets/sprite/tank_y3/1.png" type="Texture" id=17]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31, 31 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "1Up",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "3Up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "2Up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "0Up",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "0Right",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "0Down",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "0Left",
+"speed": 10.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 11 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 30.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+z_index = 1
+collision_mask = 2147483650
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 1.2, 1.2 )
+frames = SubResource( 2 )
+animation = "0Up"
+
+[node name="Effect" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+playing = true
+
+[node name="InvincibleTimer" type="Timer" parent="."]
+
+[node name="Cannon" type="Position2D" parent="."]
+position = Vector2( 0, -32 )
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_Timer_timeout"]
